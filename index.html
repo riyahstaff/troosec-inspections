@@ -367,7 +367,7 @@
                 <div class="success-message" id="successMessage">
                     ✓ Thank you! Your inquiry has been submitted. We'll contact you soon.
                 </div>
-                <form id="inquiryForm">
+                <form id="inquiryForm" action="https://formspree.io/f/myznvgpe" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name">Full Name *</label>
                         <input type="text" id="name" name="name" required>
@@ -473,25 +473,7 @@
         }
 
         document.getElementById('inquiryForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                address: document.getElementById('address').value,
-                inspectionType: document.getElementById('inspectionType').value,
-                preferredDate: document.getElementById('preferredDate').value,
-                message: document.getElementById('message').value,
-                filesCount: uploadedFiles.length,
-                timestamp: new Date().toLocaleString()
-            };
-
-            console.log('Form submitted:', formData);
-            console.log('Uploaded files:', uploadedFiles);
-
             document.getElementById('successMessage').style.display = 'block';
-            this.reset();
             uploadedFiles = [];
             document.getElementById('imagePreview').innerHTML = '';
             document.getElementById('fileCount').textContent = '';
