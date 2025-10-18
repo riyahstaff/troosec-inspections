@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Home Inspections | Troosec Inspections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f3a4f 0%, #1e5a7d 100%);
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-section img {
+            height: 50px;
+            width: auto;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 30px;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #0f3a4f 0%, #1e5a7d 100%);
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            background: #2dd4bf;
+            color: #0f3a4f;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .cta-button:hover {
+            background: #20b8a3;
+        }
+
+        .services {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #0f3a4f;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .service-card h3 {
+            color: #2dd4bf;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .inquiry-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .inquiry-section h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: #0f3a4f;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #0f3a4f;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #2dd4bf;
+            box-shadow: 0 0 5px rgba(45, 212, 191, 0.3);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .file-input-wrapper input[type="file"] {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #2dd4bf;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+
+        .file-label:hover {
+            background: #20b8a3;
+        }
+
+        .file-name {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .image-preview {
+            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+        }
+
+        .preview-item {
+            position: relative;
+        }
+
+        .preview-item img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid #2dd4bf;
+        }
+
+        .preview-item button {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .preview-item button:hover {
+            background: #c0392b;
+        }
+
+        .submit-btn {
+            background: #0f3a4f;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #0a2638;
+        }
+
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        footer {
+            background: #0f3a4f;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+
+            header h1 {
+                font-size: 18px;
+            }
+
+            nav a {
+                margin-left: 15px;
+                font-size: 14px;
+            }
+
+            .logo-section img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%231e5a7d' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' font-size='24' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='middle'%3ETROOSEC%3C/text%3E%3C/svg%3E" alt="Troosec Inspections Logo">
+                <h1>Troosec Inspections</h1>
+            </div>
+            <nav>
+                <a href="#home">Home</a>
+                <a href="#services">Services</a>
+                <a href="#booking">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Professional Home Inspections</h2>
+            <p>Comprehensive inspections for peace of mind</p>
+            <a href="#booking" class="cta-button">Schedule an Inspection</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>🔍 Pre-Purchase Inspections</h3>
+                    <p>Thorough evaluation of properties before purchase to identify potential issues and protect your investment.</p>
+                </div>
+                <div class="service-card">
+                    <h3>🔧 General Home Inspections</h3>
+                    <p>Complete assessment of all major home systems including electrical, plumbing, HVAC, and structural integrity.</p>
+                </div>
+                <div class="service-card">
+                    <h3>📋 Inspection Reports</h3>
+                    <p>Detailed, easy-to-understand reports with photos and recommendations delivered within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="inquiry-section" id="booking">
+        <div class="container">
+            <h2>Request an Inspection</h2>
+            <div class="form-container">
+                <div class="success-message" id="successMessage">
+                    ✓ Thank you! Your inquiry has been submitted. We'll contact you soon.
+                </div>
+                <form id="inquiryForm">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Property Address *</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="inspectionType">Inspection Type *</label>
+                        <select id="inspectionType" name="inspectionType" required>
+                            <option value="">Select an option</option>
+                            <option value="pre-purchase">Pre-Purchase Inspection</option>
+                            <option value="general">General Home Inspection</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="preferredDate">Preferred Inspection Date</label>
+                        <input type="date" id="preferredDate" name="preferredDate">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Additional Information</label>
+                        <textarea id="message" name="message" placeholder="Tell us more about your inspection needs..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Upload Photos (Optional)</label>
+                        <div class="file-input-wrapper">
+                            <label for="photos" class="file-label">Choose Photos</label>
+                            <input type="file" id="photos" name="photos" multiple accept="image/*">
+                        </div>
+                        <div class="file-name" id="fileCount"></div>
+                        <div class="image-preview" id="imagePreview"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Troosec Inspections. All rights reserved.</p>
+            <p>Professional • Thorough • Reliable</p>
+        </div>
+    </footer>
+
+    <script>
+        let uploadedFiles = [];
+
+        document.getElementById('photos').addEventListener('change', function(e) {
+            uploadedFiles = Array.from(e.target.files);
+            updateFileDisplay();
+        });
+
+        function updateFileDisplay() {
+            const fileCount = document.getElementById('fileCount');
+            const preview = document.getElementById('imagePreview');
+            
+            if (uploadedFiles.length > 0) {
+                fileCount.textContent = `${uploadedFiles.length} file(s) selected`;
+                preview.innerHTML = '';
+                
+                uploadedFiles.forEach((file, index) => {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const div = document.createElement('div');
+                        div.className = 'preview-item';
+                        div.innerHTML = `
+                            <img src="${e.target.result}" alt="Preview">
+                            <button type="button" onclick="removeFile(${index})">×</button>
+                        `;
+                        preview.appendChild(div);
+                    };
+                    reader.readAsDataURL(file);
+                });
+            } else {
+                fileCount.textContent = '';
+                preview.innerHTML = '';
+            }
+        }
+
+        function removeFile(index) {
+            uploadedFiles.splice(index, 1);
+            document.getElementById('photos').value = '';
+            updateFileDisplay();
+        }
+
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                address: document.getElementById('address').value,
+                inspectionType: document.getElementById('inspectionType').value,
+                preferredDate: document.getElementById('preferredDate').value,
+                message: document.getElementById('message').value,
+                filesCount: uploadedFiles.length,
+                timestamp: new Date().toLocaleString()
+            };
+
+            console.log('Form submitted:', formData);
+            console.log('Uploaded files:', uploadedFiles);
+
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+            uploadedFiles = [];
+            document.getElementById('imagePreview').innerHTML = '';
+            document.getElementById('fileCount').textContent = '';
+
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
